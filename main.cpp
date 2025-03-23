@@ -91,9 +91,6 @@ private:
 
     chopsticks[chop1_id].put();
     chopsticks[chop2_id].put();
-
-    this->chop1 = false;
-    this->chop2 = false;
   }
 
   bool get_first_chopstick()
@@ -103,7 +100,6 @@ private:
     if(chopsticks[chop1_id].try_get() == false)
       return false;
 
-    this->chop1 = true;
     return true;
   }
 
@@ -125,7 +121,6 @@ private:
       }
       else
       {
-        chop2 = true;
         return true;
       }
 
@@ -136,7 +131,6 @@ private:
     fprintf(stderr, "Philosopher %d could not get 2nd chopstick!\n", this->id);
 
     chopsticks[chop1_id].put();
-    this->chop1 = false;
 
     return false;
   }
@@ -194,9 +188,6 @@ private:
   int chop1_id = 0;
   int chop2_id = 0;
   int chopsticks_num = 0;
-
-  bool chop1 = false;
-  bool chop2 = false;
 };
 
 std::vector<phil> phils;
